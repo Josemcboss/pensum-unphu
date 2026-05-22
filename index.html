@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Materias - Pensum UNPHU</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Selector de Materias</h1>
+            <p class="subtitle">Selecciona las materias que deseas cursar</p>
+        </header>
+
+        <div class="content">
+            <aside class="sidebar">
+                <div class="filter-section">
+                    <h3>Filtros</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="showAll" checked>
+                            Mostrar todas
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="showAvailable" checked>
+                            Disponibles
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="showLocked">
+                            Con pre-requisitos
+                        </label>
+                    </div>
+                </div>
+
+                <div class="summary-section">
+                    <h3>Resumen</h3>
+                    <div class="stat">
+                        <span>Materias Cursadas:</span>
+                        <strong id="completedCount">0</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Seleccionadas:</span>
+                        <strong id="selectedCount">0</strong>
+                    </div>
+                    <button id="resetBtn" class="btn-reset">Limpiar Selección</button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="search-bar">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Buscar por código o nombre..."
+                        class="search-input"
+                    >
+                </div>
+
+                <div id="materiasContainer" class="materias-grid">
+                    <!-- Las materias se cargarán aquí -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para ver detalles -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalBody"></div>
+            <button id="modalSelectBtn" class="btn-primary">Seleccionar</button>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
