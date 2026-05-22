@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selector de Materias - Pensum UNPHU</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="description" content="Selector de materias para Ingeniería en Sistemas Computacionales UNPHU">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%236366f1' width='180' height='180'/><text x='50%' y='50%' font-size='90' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'>📚</text></svg>">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -38,7 +42,7 @@
                 </div>
 
                 <div class="summary-section">
-                    <h3>Resumen</h3>
+                    <h3>Resumen Académico</h3>
                     <div class="stat">
                         <span>Materias Cursadas:</span>
                         <strong id="completedCount">0</strong>
@@ -47,7 +51,26 @@
                         <span>Seleccionadas:</span>
                         <strong id="selectedCount">0</strong>
                     </div>
+                    <hr style="margin: 12px 0; border: none; border-top: 1px solid var(--gray-200);">
+                    <div style="font-size: 0.9rem; color: var(--gray-600); line-height: 1.6;">
+                        <div style="margin-bottom: 10px;">
+                            <span style="font-weight: 600;">Créditos Completados:</span><br>
+                            <strong id="creditosCompletados" style="color: var(--success-color); font-size: 1.2rem;">0</strong> / 210
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <span style="font-weight: 600;">Progreso:</span>
+                            <div style="width: 100%; height: 8px; background: var(--gray-200); border-radius: 4px; margin-top: 5px; overflow: hidden;">
+                                <div id="barraProgreso" style="height: 100%; background: var(--primary-color); width: 0%; transition: width 0.3s ease;"></div>
+                            </div>
+                            <small id="porcentajeProgreso" style="color: var(--gray-500);">0%</small>
+                        </div>
+                        <div>
+                            <span style="font-weight: 600;">Créditos Restantes:</span><br>
+                            <strong id="creditosRestantes" style="color: var(--warning-color); font-size: 1.2rem;">210</strong>
+                        </div>
+                    </div>
                     <button id="resetBtn" class="btn-reset">Limpiar Selección</button>
+                    <button id="exportBtn" class="btn-export">📥 Exportar a PDF</button>
                 </div>
             </aside>
 
@@ -80,5 +103,14 @@
 
     <script src="data.js"></script>
     <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        // Registrar Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registrado:', reg))
+                .catch(err => console.log('Error al registrar Service Worker:', err));
+        }
+    </script>
 </body>
 </html>
